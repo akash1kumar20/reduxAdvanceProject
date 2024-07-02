@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { productSliceActions } from "../../store";
+import { productSliceActions } from "../../store/cartSlice";
 
 const DUMMY_Products = [
   {

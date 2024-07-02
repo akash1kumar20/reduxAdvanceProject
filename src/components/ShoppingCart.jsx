@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { productSliceActions } from "../../store";
+import { productSliceActions } from "../../store/cartSlice";
 
 const ShoppinCart = () => {
-  const items = useSelector((state) => state.reduxReducer.items);
   const [productItem, setProductItem] = useState([]);
+  const items = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
+
   useEffect(() => {
     setProductItem(items);
   });
@@ -17,8 +18,9 @@ const ShoppinCart = () => {
   const decreaseItem = (item) => {
     dispatch(productSliceActions.removeItemFromCart(item.id));
   };
+
   return (
-    <div className="bg-black text-white px-4 py-4 w-fit mx-auto rounded-md">
+    <div className="bg-black text-white px-4 py-4 mt-4 w-fit mx-auto rounded-md">
       <h2 className="pe-48 text-3xl font-semibold">Your Shopping Cart</h2>
       {productItem.map((item) => (
         <div
